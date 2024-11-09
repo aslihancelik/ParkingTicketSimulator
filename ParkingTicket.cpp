@@ -1,6 +1,6 @@
 // ParkingTicket.cpp
 
-#include "ParkingSimulator.h"
+#include "ParkingTicket.h"
 
 // Constructor for ParkingTicket
 ParkingTicket::ParkingTicket(const ParkedCar& c, const ParkingMeter& m, const PoliceOfficer& o)

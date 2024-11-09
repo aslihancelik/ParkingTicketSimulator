@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 
+#include "ParkingTicket.h"
+
 using namespace std;
 
 class ParkedCar {
@@ -34,8 +36,6 @@ public:
 	int getPurchasedMinutes() const { return purchasedMinutes; }
 };
 
-// Forward declaration 
-class ParkingTicket;
 
 class PoliceOfficer {
 
@@ -45,27 +45,41 @@ private:
     string badgeNumber;
 
 public:
-    PoliceOfficer(std::string n = "OFFICER", std::string bn = "BADGE")
-        : name(n), badgeNumber(bn) {}
+    PoliceOfficer(string n = "OFFICER", string bn = "BADGE")
+        : name(n), badgeNumber(bn) {
+    
+    }
 
     string getName() const { return name; }
     string getBadgeNumber() const { return badgeNumber; }
 
+    
     // Examine if the car has been parked longer than the purchased time
-    bool examineViolation(const ParkedCar& car, const ParkingMeter& meter) const {
-        return car.getMinutesParked() > meter.getPurchasedMinutes();
+    void examineViolation(const ParkedCar& car, const ParkingMeter& meter) const {
+
+        if (car.getMinutesParked() > meter.getPurchasedMinutes()) {
+            issueTicket(car, meter);
+        }
+        else {
+            cout << "No parking violation. No ticket issued.\n";
+        }
     }
 
     void issueTicket(const ParkedCar& car, const ParkingMeter& meter) const {
-        // If the car has been parked longer than the purchased time, issue a ticket
-        if (examineViolation(car, meter)) {
-            ParkingTicket ticket(car, meter, *this);  // Create the ticket
-            ticket.printTicket();  // Print the ticket
-        }
-        else {
-            std::cout << "No parking violation. No ticket issued.\n";
-        }
+         //If the car has been parked longer than the purchased time, issue a ticket
+        ParkingTicket ticket(car, meter, *this);  // Create the ticket
+        ticket.printTicket();  // Print the ticket
+
+       
     }
+    
+
+    //ParkingTicket* issueTicket(const ParkedCar& car, const ParkingMeter& meter) {
+    //    if (car.getMinutesParked() > meter.getPurchasedMinutes()) {
+    //        return new ParkingTicket(car, meter, *this);  // Only issue ticket if violation
+    //    }
+    //    return nullptr;  // No violation
+    //}
 
 };
 

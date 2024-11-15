@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 
-#include "ParkingTicket.h"
 
 using namespace std;
 
@@ -55,23 +54,12 @@ public:
 
     
     // Examine if the car has been parked longer than the purchased time
-    void examineViolation(const ParkedCar& car, const ParkingMeter& meter) const {
+    bool examineViolation(const ParkedCar& car, const ParkingMeter& meter) const {
 
-        if (car.getMinutesParked() > meter.getPurchasedMinutes()) {
-            issueTicket(car, meter);
-        }
-        else {
-            cout << "No parking violation. No ticket issued.\n";
-        }
+        return car.getMinutesParked() > meter.getPurchasedMinutes();
     }
 
-    void issueTicket(const ParkedCar& car, const ParkingMeter& meter) const {
-         //If the car has been parked longer than the purchased time, issue a ticket
-        ParkingTicket ticket(car, meter, *this);  // Create the ticket
-        ticket.printTicket();  // Print the ticket
-
-       
-    }
+   
     
 
     //ParkingTicket* issueTicket(const ParkedCar& car, const ParkingMeter& meter) {

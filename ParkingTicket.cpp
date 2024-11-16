@@ -17,6 +17,7 @@ int ParkingTicket::calculateFine(int overparkedMinutes) const {
     }
     else {
         // $10 for each additional hour or part of an hour
+        // +59 ensures any partial hour is rounded up when integer division is applied
         return 25 + ((overparkedMinutes - 60 + 59) / 60) * 10;
     }
 }

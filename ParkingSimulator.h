@@ -14,8 +14,21 @@ private:
 public:
 
 	ParkedCar(string mk = "MAKE", string ml = "MODEL", string co = "COLOR", string ln = "LICENSE", int mn=0)
-		: make(mk), model(ml), color(co), licenseNumber(ln), minutesParked(mn) {}
+		: make(mk), model(ml), color(co), licenseNumber(ln) {
+    
+        setMinutesParked(mn);
+    
+    
+    }
 
+    void setMinutesParked(int minutes){
+        if (minutes >= 0) {
+            minutesParked = minutes;
+        }
+        else {
+            throw invalid_argument("Invalid entry for minutes parked. Minutes parked has to be a nonnegative number.");
+        }
+    }
 	int getMinutesParked() const { return minutesParked; }
 	string getMake() const { return make; }
 	string getModel() const { return model; }

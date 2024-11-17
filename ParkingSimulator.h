@@ -1,3 +1,6 @@
+// ParkingSimulator.h
+// This file consist of decalrations and inline implementations of the ParkedCar, ParkingMeter and PoliceOfficer classes.
+
 #ifndef PARKINGSIMULATION_H 
 #define PARKINGSIMULATION_H
 #include <string>
@@ -13,6 +16,7 @@ private:
 
 public:
 
+    //Constructor
 	ParkedCar(string mk = "MAKE", string ml = "MODEL", string co = "COLOR", string ln = "LICENSE", int mn=0)
 		: make(mk), model(ml), color(co), licenseNumber(ln) {
     
@@ -20,7 +24,7 @@ public:
     
     
     }
-
+    //setting the parked minutes with input validation
     void setMinutesParked(int minutes){
         if (minutes >= 0) {
             minutesParked = minutes;
@@ -29,6 +33,7 @@ public:
             throw invalid_argument("Invalid entry for minutes parked. Minutes parked has to be a nonnegative number.");
         }
     }
+    //Getters
 	int getMinutesParked() const { return minutesParked; }
 	string getMake() const { return make; }
 	string getModel() const { return model; }
@@ -43,8 +48,10 @@ private:
 	int purchasedMinutes;
 
 public:
+    //constructor
 	ParkingMeter(int minutes = 0) : purchasedMinutes(minutes) {}
 
+    //getter
 	int getPurchasedMinutes() const { return purchasedMinutes; }
 };
 
@@ -57,11 +64,14 @@ private:
     string badgeNumber;
 
 public:
+
+    //constructor
     PoliceOfficer(string n = "OFFICER", string bn = "BADGE")
         : name(n), badgeNumber(bn) {
     
     }
 
+    //getters
     string getName() const { return name; }
     string getBadgeNumber() const { return badgeNumber; }
 
@@ -71,16 +81,6 @@ public:
 
         return car.getMinutesParked() > meter.getPurchasedMinutes();
     }
-
-   
-    
-
-    //ParkingTicket* issueTicket(const ParkedCar& car, const ParkingMeter& meter) {
-    //    if (car.getMinutesParked() > meter.getPurchasedMinutes()) {
-    //        return new ParkingTicket(car, meter, *this);  // Only issue ticket if violation
-    //    }
-    //    return nullptr;  // No violation
-    //}
 
 };
 

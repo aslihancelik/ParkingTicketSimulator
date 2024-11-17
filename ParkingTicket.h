@@ -1,3 +1,8 @@
+// ParkingTicket.h
+//
+// This file consists of the declaration of ParkingTicket instance variables and member functions.
+//
+
 #pragma once
 
 #include "ParkingSimulator.h"

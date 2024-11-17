@@ -1,5 +1,10 @@
 // ParkingTicketSimulator.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+// This program is a simulator of parking ticket issued to a violator by involving a parked car, parking meter,
+// police officer.
+//
+//Programmer: Aslihan Aria Celik
+//
 
 #include "ParkingSimulator.h"
 #include "ParkingTicket.h"

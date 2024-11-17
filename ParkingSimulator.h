@@ -49,8 +49,22 @@ private:
 
 public:
     //constructor
-	ParkingMeter(int minutes = 0) : purchasedMinutes(minutes) {}
+	ParkingMeter(int minutes = 0) {
+        setPurchasedMinutes(minutes);
+    }
 
+
+    //setter
+    void setPurchasedMinutes(int mins) {
+        if (mins < 0) {
+            throw invalid_argument("Invalid entry for purchased minutes.Purchased minutes has to be a nonnegative ineteger.");
+        }
+        else {
+            purchasedMinutes = mins;
+        }
+    
+    
+    }
     //getter
 	int getPurchasedMinutes() const { return purchasedMinutes; }
 };

@@ -57,7 +57,8 @@ int main()
         {60, 0},    // Car parked for zero minutes
         {0, 10},    // Purchased time is zero
         {60, 61},   // Just over an hour
-        {60, -10}   // Invalid parked time
+        {60, -10},  // Invalid parked time
+        {-30, 10},  // Invalid purchased time
     };
 
 
